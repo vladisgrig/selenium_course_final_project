@@ -16,7 +16,12 @@ class BasePage():
             self.browser.find_element(how, what)
         except NoSuchElementException:
             return False
-        return True        
+        return True
+
+    def get_element_text(self, how, what):
+        if self.is_element_present(how, what):
+            return self.browser.find_element(how, what).text
+        return ''    
 
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
